@@ -6,8 +6,16 @@
     <script src="https://cdn.jsdelivr.net/npm/phaser@3.60.0/dist/phaser.min.js"></script>
     <style>
         body { margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; font-family: sans-serif; }
-        #controls { padding: 10px; background-color: #f0f0f0; width:100%; box-sizing: border-box; text-align: center;}
-        #phaser-container { width: 800px; height: 600px; border: 1px solid black; margin-top: 10px;}
+        #controls { padding: 10px; background-color: #f0f0f0; width:100%; box-sizing: border-box; text-align: center; margin-bottom: 10px;}
+        #phaser-container { width: 800px; height: 600px; border: 1px solid black; }
+        /* Styles for proof area - can be moved to a separate CSS file later */
+        #proof-area { margin-top: 20px; padding: 10px; border: 1px solid #ccc; width: 800px; box-sizing: border-box;}
+        #proof-input-form label { display: block; margin-bottom: 5px; font-weight: bold; }
+        #proof-input-form textarea, #proof-input-form input[type="text"] { width: 98%; margin-bottom: 10px; padding: 5px; border: 1px solid #ddd; }
+        #proof-input-form input#proofReferences { width: 70%; } /* Specific width for this input */
+        #proof-steps-list { list-style-type: none; padding-left: 0; }
+        #proof-steps-list li { border-bottom: 1px dashed #eee; padding-bottom: 8px; margin-bottom: 8px; }
+        #proof-steps-list li:last-child { border-bottom: none; }
     </style>
 </head>
 <body>
@@ -17,10 +25,42 @@
         <button id="addSegmentBtn">Add Segment</button>
         <button id="addTriangleBtn">Add Triangle</button>
         <button id="selectDragBtn">Select & Drag Point</button>
-        <!-- <button id="addAngleBtn">Add Angle</button> -->
         <span id="currentModeFeedback" style="margin-left: 20px; font-style: italic;">Mode: None</span>
     </div>
+
     <div id="phaser-container"></div>
+
+    <div id="proof-area">
+        <h3>Proof Construction</h3>
+        
+        <div id="proof-input-form">
+            <h4>Current Step:</h4>
+            <div>
+                <label for="proofStatement">Statement:</label>
+                <textarea id="proofStatement" rows="3"></textarea>
+            </div>
+            <div>
+                <label for="proofReason">Reason:</label>
+                <textarea id="proofReason" rows="2"></textarea>
+            </div>
+            <div>
+                <label for="proofReferences">Referenced Element IDs:</label>
+                <input type="text" id="proofReferences" style="width: 70%; margin-bottom: 10px;" readonly>
+                <button id="selectElementsBtn" type="button" style="margin-left: 5px;">Select/Deselect</button>
+                <button id="clearSelectionBtn" type="button" style="margin-left: 5px;">Clear Selection</button>
+                <span id="selectionModeFeedback" style="font-style:italic; margin-left:10px;"></span>
+            </div>
+            <button id="addProofStepBtn">Add Step to Proof</button>
+        </div>
+
+        <div id="proof-display" style="margin-top: 20px; border-top: 1px solid #eee; padding-top: 10px;">
+            <h4>Proof Steps:</h4>
+            <ul id="proof-steps-list">
+                <li style="border-bottom: 1px dashed #eee; padding-bottom: 5px; margin-bottom: 5px;"><em>No steps yet.</em></li>
+            </ul>
+        </div>
+    </div>
+
     <script src="app.js"></script>
 </body>
 </html>
