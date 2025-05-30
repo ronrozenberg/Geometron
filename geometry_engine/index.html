@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Interactive Geometry Engine</title>
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.60.0/dist/phaser.min.js"></script>
+    <style>
+        body { margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; font-family: sans-serif; }
+        #controls { padding: 10px; background-color: #f0f0f0; width:100%; box-sizing: border-box; text-align: center;}
+        #phaser-container { width: 800px; height: 600px; border: 1px solid black; margin-top: 10px;}
+    </style>
+</head>
+<body>
+    <div id="controls">
+        <h3>Interactive Geometry Engine - Phase 1</h3>
+        <button id="addPointBtn">Add Point</button>
+        <button id="addSegmentBtn">Add Segment</button>
+        <button id="addTriangleBtn">Add Triangle</button>
+        <button id="selectDragBtn">Select & Drag Point</button>
+        <!-- <button id="addAngleBtn">Add Angle</button> -->
+        <span id="currentModeFeedback" style="margin-left: 20px; font-style: italic;">Mode: None</span>
+    </div>
+    <div id="phaser-container"></div>
+    <script src="app.js"></script>
+</body>
+</html>
